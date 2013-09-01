@@ -25,7 +25,7 @@ class pptpd (
   $bcrelay     = false,
   $connections = 100,
   $delegate    = true,
-  $localip     = '192.168.0.1',
+  $localip     = $::ipaddress,
   $remoteip    = '192.168.0.234-238,192.168.0.245',
   $noipparam   = false,
   $listen      = false,
