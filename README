@@ -1,8 +1,16 @@
-Puppet module to install and manage pptpd on Debian-based platforms
+# Puppet module to install and manage pptpd on Debian-based platforms
 
-For details have a look at init.pp documentation
+For details have a look at init.pp
 
-Usage example:
+## Simple usage example
 
 include 'pptpd'
 pptpd::user { 'myuser': password => 'verysecret' }
+
+
+## pptpd::user define
+
+Can be used to manage users in chap-secrets:
+
+pptpd::user { 'myuser': ensure => absent }
+pptpd::user { 'my_new_user': }  # password defaulted to secret!
