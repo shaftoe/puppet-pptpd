@@ -1,0 +1,20 @@
+# this file is managed by Puppet, motifications will be overwritten
+option <%= @option %>
+localip <%= @localip %>
+remoteip <%= @remoteip %>
+stimeout <%= @stimeout %>
+connections <%= @connections %>
+pidfile <%= @pidfile %>
+speed <%= @speed %>
+<% if @logwtmp %>logwtmp
+<% end -%>
+<% if @debug %>debug
+<% end -%>
+<% if @bcrelay %>bcrelay
+<% end -%>
+<% if @delegate %>delegate
+<% end -%>
+<% if @noipparam %>noipparam
+<% end -%>
+<% if @listen %><%= @listen %>
+<% end -%>

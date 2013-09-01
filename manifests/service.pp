@@ -5,6 +5,11 @@ class pptpd::service () {
 
   require 'pptpd::config'
 
-  service { 'pptpd': ensure => running }
+  $ensure = $pptpd::ensure ? {
+    'present' => 'running',
+    default   => 'stopped'
+  }
+
+  service { 'pptpd': ensure => $ensure }
 
 }

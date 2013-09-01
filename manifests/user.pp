@@ -1,5 +1,5 @@
 #
-# Add or remove users
+# Add / remove users from /etc/ppp/chap-secrets
 #
 define pptpd::user ($password = 'secret', $ensure = 'present') {
 
@@ -8,12 +8,12 @@ define pptpd::user ($password = 'secret', $ensure = 'present') {
   $s = "${name} pptpd ${password} *"
 
   if $ensure == 'absent' {
-    exec { "remove ${name}":
-      command => "/bin/sed -i '/$s/d' /etc/ppp/chap-secrets",
+    exec { "pptpd remove ${name} user":
+      command => "/bin/sed -i '/${name} pptpd/d' /etc/ppp/chap-secrets",
       onlyif  => "/bin/grep '${s}' /etc/ppp/chap-secrets",
     }
   } else {
-    exec { "add ${name}":
+    exec { "pptpd add ${name} user":
       command => "/bin/echo '${s}' >> /etc/ppp/chap-secrets",
       unless  => "/bin/grep '${s}' /etc/ppp/chap-secrets",
     }

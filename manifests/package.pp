@@ -1,12 +1,12 @@
 #
-# Install package
+# Manage pptpd package installation
 #
 class pptpd::package () {
 
   case $::osfamily {
     'Debian': {
-      package { 'pptpd': ensure => present }
+      package { 'pptpd': ensure => $pptpd::ensure }
     }
-    default: { fail "Operating system family ${::osfamily} not supported" }
+    default: { fail "Operating system ${::operatingsystem} not supported" }
   }
 }

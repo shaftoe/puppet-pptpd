@@ -1,16 +1,8 @@
-pptpd
+Puppet module to install and manage pptpd on Debian-based platforms
 
-This is the pptpd module.
+For details have a look at init.pp documentation
 
-License
--------
+Usage example:
 
-
-Contact
--------
-
-
-Support
--------
-
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+include 'pptpd'
+pptpd::user { 'myuser': password => 'verysecret' }

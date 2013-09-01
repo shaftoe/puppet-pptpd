@@ -1,20 +1,15 @@
 #
 # Config files
 #
-class pptpd::config () {
+class pptpd::config () inherits pptpd {
 
   require 'pptpd::package'
 
   file { '/etc/pptpd.conf':
-    ensure  => present,
+    ensure  => $pptpd::ensure,
     owner   => 'root',
     mode    => '0440',
-    content => 'option /etc/ppp/pptpd-options
-logwtmp
-
-localip 192.168.0.1
-remoteip 192.168.0.234-238,192.168.0.245
-',
+    content => template('pptpd/pptpd.conf.erb')
   }
 
 }
