@@ -4,7 +4,7 @@
 class pptpd::package () {
 
   case $::osfamily {
-    'Debian': {
+    'Debian','RedHat': {
       package { 'pptpd': ensure => $pptpd::ensure }
     }
     default: { fail "Operating system ${::operatingsystem} not supported" }
