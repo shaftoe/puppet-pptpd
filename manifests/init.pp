@@ -27,6 +27,8 @@ class pptpd (
   $delegate    = true,
   $localip     = $::ipaddress,
   $remoteip    = '192.168.0.234-238,192.168.0.245',
+  $dns_servers = [],
+  $nmb_servers = [],
   $noipparam   = false,
   $listen      = false,
   $pidfile     = '/var/run/pptpd.pid',

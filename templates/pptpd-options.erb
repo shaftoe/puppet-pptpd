@@ -1,0 +1,31 @@
+name pptpd
+refuse-pap
+refuse-chap
+refuse-mschap
+require-mschap-v2
+require-mppe-128
+
+<% if @dns_servers and ! @dns_servers.empty? %>
+<% @dns_servers.each do |dns_server| %>
+<% if dns_server != '' %>ms-dns <%= dns_server %><% end %>
+<% end %>
+<% else %>
+#ms-dns 10.0.0.1
+#ms-dns 10.0.0.2
+<% end %>
+
+<% if @nmb_servers and ! @nmb_servers.empty? %>
+<% @nmb_servers.each do |nmb_server| %>
+<% if nmb_server != '' %>ms-wins <%= nmb_server %><% end %>
+<% end %>
+<% else %>
+#ms-wins 10.0.0.3
+#ms-wins 10.0.0.4
+<% end %>
+
+proxyarp
+lock
+nobsdcomp 
+novj
+novjccomp
+nologfd
